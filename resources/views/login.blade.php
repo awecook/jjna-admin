@@ -40,7 +40,7 @@
           @endforeach
         @endif
 
-        <input type="input" class="form-control" placeholder="{{ trans('admin.username') }}" name="username" value="{{ old('Waiter_Login') }}">
+        <input type="input" class="form-control" placeholder="{{ trans('admin.username') }}" name="Waiter_Login" value="{{ old('Waiter_Login') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback {!! !$errors->has('Waiter_Password') ?: 'has-error' !!}">
