@@ -3,6 +3,7 @@
 namespace Encore\Admin\Auth\Database;
 
 use Illuminate\Database\Seeder;
+use App\Models\EmployeeAuth as Administrator;
 
 class AdminTablesSeeder extends Seeder
 {
@@ -14,12 +15,13 @@ class AdminTablesSeeder extends Seeder
     public function run()
     {
         // create a user.
-        /*Administrator::truncate();
+        Administrator::truncate();
         Administrator::create([
+            'Waiter_ID' => 'admin',
             'Waiter_Login' => 'admin',
             'Waiter_Password' => bcrypt('admin'),
-            'name'     => 'Administrator',
-        ]);*/
+            'Email'     => 'admin@ex.com',
+        ]);
 
         // create a role.
         Role::truncate();
@@ -30,7 +32,7 @@ class AdminTablesSeeder extends Seeder
         ]);
 
         // add role to user.
-        //Administrator::first()->roles()->save(Role::first());
+        Administrator::first()->roles()->save(Role::first());
 
         //create a permission
         Permission::truncate();
