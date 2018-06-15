@@ -2,7 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
-use Encore\Admin\Auth\Database\Administrator;
+use App\Models\EmployeeAuth as Administrator;
 use Encore\Admin\Auth\Database\OperationLog;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;

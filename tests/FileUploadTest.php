@@ -1,6 +1,6 @@
 <?php
 
-use Encore\Admin\Auth\Database\Administrator;
+use App\Models\EmployeeAuth as Administrator;
 use Illuminate\Support\Facades\File;
 use Tests\Models\File as FileModel;
 

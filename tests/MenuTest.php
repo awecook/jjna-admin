@@ -1,6 +1,6 @@
 <?php
 
-use Encore\Admin\Auth\Database\Administrator;
+use App\Models\EmployeeAuth as Administrator;
 use Encore\Admin\Auth\Database\Menu;
 
 class MenuTest extends TestCase
