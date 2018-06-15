@@ -105,7 +105,7 @@ class UserController extends Controller
             $grid->updated_at();
 
             $grid->filter(function ($filter) {
-                $filter->like('username');
+                $filter->like('Waiter_Login');
                 $filter->like('email');
                 $filter->like('profile.postcode');
                 $filter->between('profile.start_at')->datetime();
@@ -134,12 +134,12 @@ class UserController extends Controller
             $form->disableDeletion();
 
             $form->display('id', 'ID');
-            $form->text('username');
+            $form->text('Waiter_Login');
             $form->email('email')->rules('required');
             $form->mobile('mobile');
             $form->image('avatar')->help('上传头像', 'fa-image');
             $form->ignore(['password_confirmation']);
-            $form->password('password')->rules('confirmed');
+            $form->password('Waiter_Password')->rules('confirmed');
             $form->password('password_confirmation');
 
             $form->divide();

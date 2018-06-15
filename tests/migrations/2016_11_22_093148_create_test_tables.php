@@ -42,17 +42,17 @@ class CreateTestTables extends Migration
 
         Schema::create('test_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
+            $table->string('Waiter_Login');
             $table->string('email');
             $table->string('mobile')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('password');
+            $table->string('Waiter_Password');
             $table->timestamps();
         });
 
         Schema::create('test_user_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
+            $table->string('Waiter_ID');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('postcode')->nullable();
@@ -73,9 +73,9 @@ class CreateTestTables extends Migration
         });
 
         Schema::create('test_user_tags', function (Blueprint $table) {
-            $table->integer('user_id');
+            $table->string('Waiter_ID');
             $table->integer('tag_id');
-            $table->index(['user_id', 'tag_id']);
+            $table->index(['Waiter_ID', 'tag_id']);
             $table->timestamps();
         });
     }

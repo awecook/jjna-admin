@@ -14,22 +14,23 @@ class AdminTablesSeeder extends Seeder
     public function run()
     {
         // create a user.
-        Administrator::truncate();
+        /*Administrator::truncate();
         Administrator::create([
-            'username' => 'admin',
-            'password' => bcrypt('admin'),
+            'Waiter_Login' => 'admin',
+            'Waiter_Password' => bcrypt('admin'),
             'name'     => 'Administrator',
-        ]);
+        ]);*/
 
         // create a role.
         Role::truncate();
         Role::create([
+            'id'   => 99,
             'name' => 'Administrator',
             'slug' => 'administrator',
         ]);
 
         // add role to user.
-        Administrator::first()->roles()->save(Role::first());
+        //Administrator::first()->roles()->save(Role::first());
 
         //create a permission
         Permission::truncate();

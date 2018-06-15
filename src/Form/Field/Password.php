@@ -7,7 +7,7 @@ class Password extends Text
     public function render()
     {
         $this->prepend('<i class="fa fa-eye-slash fa-fw"></i>')
-            ->defaultAttribute('type', 'password');
+            ->defaultAttribute('type', 'Waiter_Password');
 
         return parent::render();
     }

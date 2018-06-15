@@ -24,9 +24,9 @@ class UsersTest extends TestCase
     public function testCreateUser()
     {
         $user = [
-            'username'              => 'Test',
+            'Waiter_Login'              => 'Test',
             'name'                  => 'Name',
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123456',
         ];
 
@@ -35,19 +35,19 @@ class UsersTest extends TestCase
             ->see('Create')
             ->submitForm('Submit', $user)
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.users_table'), ['username' => 'Test']);
+            ->seeInDatabase(config('admin.database.users_table'), ['Waiter_Login' => 'Test']);
 
         // assign role to user
         $this->visit('admin/auth/users/2/edit')
             ->see('Edit')
             ->submitForm('Save', ['roles' => [1]])
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.role_users_table'), ['user_id' => 2, 'role_id' => 1]);
+            ->seeInDatabase(config('admin.database.role_users_table'), ['Waiter_ID' => 2, 'role_id' => 1]);
 
         $this->visit('admin/auth/logout')
             ->dontSeeIsAuthenticated('admin')
             ->seePageIs('admin/auth/login')
-            ->submitForm('Login', ['username' => $user['username'], 'password' => $user['password']])
+            ->submitForm('Login', ['Waiter_Login' => $user['Waiter_Login'], 'Waiter_Password' => $user['Waiter_Password']])
             ->see('dashboard')
             ->seeIsAuthenticated('admin')
             ->seePageIs('admin');
@@ -75,7 +75,7 @@ class UsersTest extends TestCase
         $password = 'odjwyufkglte';
 
         $data = [
-            'password'              => $password,
+            'Waiter_Password'              => $password,
             'password_confirmation' => $password,
             'roles'                 => [1],
         ];
@@ -87,7 +87,7 @@ class UsersTest extends TestCase
             ->visit('admin/auth/logout')
             ->dontSeeIsAuthenticated('admin')
             ->seePageIs('admin/auth/login')
-            ->submitForm('Login', ['username' => $this->user->username, 'password' => $password])
+            ->submitForm('Login', ['Waiter_Login' => $this->user->username, 'Waiter_Password' => $password])
             ->see('dashboard')
             ->seeIsAuthenticated('admin')
             ->seePageIs('admin');

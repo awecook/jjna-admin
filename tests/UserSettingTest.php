@@ -16,10 +16,10 @@ class UserSettingTest extends TestCase
     {
         $this->visit('admin/auth/setting')
             ->see('User setting')
-            ->see('Username')
+            ->see('Waiter_Login')
             ->see('Name')
             ->see('Avatar')
-            ->see('Password')
+            ->see('Waiter_Password')
             ->see('Password confirmation');
 
         $this->seeElement('input[value=Administrator]')
@@ -56,7 +56,7 @@ class UserSettingTest extends TestCase
     public function testUpdatePasswordConfirmation()
     {
         $data = [
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123',
         ];
 
@@ -69,7 +69,7 @@ class UserSettingTest extends TestCase
     public function testUpdatePassword()
     {
         $data = [
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123456',
         ];
 
@@ -77,13 +77,13 @@ class UserSettingTest extends TestCase
             ->submitForm('Save', $data)
             ->seePageIs('admin/auth/setting');
 
-        $this->assertTrue(app('hash')->check($data['password'], Administrator::first()->makeVisible('password')->password));
+        $this->assertTrue(app('hash')->check($data['Waiter_Password'], Administrator::first()->makeVisible('Waiter_Password')->password));
 
         $this->visit('admin/auth/logout')
             ->seePageIs('admin/auth/login')
             ->dontSeeIsAuthenticated('admin');
 
-        $credentials = ['username' => 'admin', 'password' => '123456'];
+        $credentials = ['Waiter_Login' => 'admin', 'Waiter_Password' => '123456'];
 
         $this->visit('admin/auth/login')
             ->see('login')

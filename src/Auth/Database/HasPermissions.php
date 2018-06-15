@@ -35,7 +35,7 @@ trait HasPermissions
 
         $relatedModel = config('admin.database.roles_model');
 
-        return $this->belongsToMany($relatedModel, $pivotTable, 'user_id', 'role_id');
+        return $this->belongsToMany($relatedModel, $pivotTable, 'Waiter_ID', 'role_id');
     }
 
     /**
@@ -49,7 +49,7 @@ trait HasPermissions
 
         $relatedModel = config('admin.database.permissions_model');
 
-        return $this->belongsToMany($relatedModel, $pivotTable, 'user_id', 'permission_id');
+        return $this->belongsToMany($relatedModel, $pivotTable, 'Waiter_ID', 'permission_id');
     }
 
     /**

@@ -53,7 +53,7 @@ class LogController extends Controller
                 $grid->disableCreation();
 
                 $grid->filter(function ($filter) {
-                    $filter->equal('user_id', 'User')->select(Administrator::all()->pluck('name', 'id'));
+                    $filter->equal('Waiter_ID', 'User')->select(Administrator::all()->pluck('name', 'id'));
                     $filter->equal('method')->select(array_combine(OperationLog::$methods, OperationLog::$methods));
                     $filter->like('path');
                     $filter->equal('ip');

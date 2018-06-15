@@ -40,10 +40,10 @@ class UserFormTest extends TestCase
     public function testSubmitForm()
     {
         $data = [
-            'username'              => 'John Doe',
+            'Waiter_Login'              => 'John Doe',
             'email'                 => 'hello@world.com',
             'mobile'                => '13421234123',
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123456',
             //"avatar"   => "test.jpg",
             'profile' => [
@@ -65,7 +65,7 @@ class UserFormTest extends TestCase
             ->submitForm('Submit', $data)
             ->seePageIs('admin/users')
             ->seeInElement('td', 1)
-            ->seeInElement('td', $data['username'])
+            ->seeInElement('td', $data['Waiter_Login'])
             ->seeInElement('td', $data['email'])
             ->seeInElement('td', $data['mobile'])
             ->seeInElement('td', "{$data['profile']['first_name']} {$data['profile']['last_name']}")
@@ -79,10 +79,10 @@ class UserFormTest extends TestCase
 
         $this->assertCount(1, UserModel::all());
 
-        $this->seeInDatabase('test_users', ['username' => $data['username']]);
+        $this->seeInDatabase('test_users', ['Waiter_Login' => $data['Waiter_Login']]);
         $this->seeInDatabase('test_users', ['email' => $data['email']]);
         $this->seeInDatabase('test_users', ['mobile' => $data['mobile']]);
-        $this->seeInDatabase('test_users', ['password' => $data['password']]);
+        $this->seeInDatabase('test_users', ['Waiter_Password' => $data['Waiter_Password']]);
 
         $this->seeInDatabase('test_user_profiles', ['first_name' => $data['profile']['first_name']]);
         $this->seeInDatabase('test_user_profiles', ['last_name' => $data['profile']['last_name']]);
@@ -144,12 +144,12 @@ class UserFormTest extends TestCase
         $id = rand(1, 10);
 
         $this->visit("admin/users/$id/edit")
-            ->type('hello world', 'username')
-            ->type('123', 'password')
+            ->type('hello world', 'Waiter_Login')
+            ->type('123', 'Waiter_Password')
             ->type('123', 'password_confirmation')
             ->press('Save')
             ->seePageIs('admin/users')
-            ->seeInDatabase('test_users', ['username' => 'hello world']);
+            ->seeInDatabase('test_users', ['Waiter_Login' => 'hello world']);
 
         $user = UserModel::with('profile')->find($id);
 
@@ -174,14 +174,14 @@ class UserFormTest extends TestCase
             ->see('The email must be a valid email address.');
 
         $this->visit("admin/users/$id/edit")
-            ->type('123', 'password')
+            ->type('123', 'Waiter_Password')
             ->type('1234', 'password_confirmation')
             ->press('Save')
             ->seePageIs("admin/users/$id/edit")
             ->see('The Password confirmation does not match.');
 
         $this->type('xx@xx.xx', 'email')
-            ->type('123', 'password')
+            ->type('123', 'Waiter_Password')
             ->type('123', 'password_confirmation')
             ->press('Save')
             ->seePageIs('admin/users')

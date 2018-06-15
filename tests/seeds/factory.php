@@ -7,11 +7,11 @@ $factory = app(Factory::class);
 
 $factory->define(Tests\Models\User::class, function (Faker $faker) {
     return [
-        'username' => $faker->userName,
+        'Waiter_Login' => $faker->userName,
         'email'    => $faker->email,
         'mobile'   => $faker->phoneNumber,
         'avatar'   => $faker->imageUrl(),
-        'password' => bcrypt('123456'),
+        'Waiter_Password' => bcrypt('123456'),
     ];
 });
 

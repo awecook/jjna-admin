@@ -74,16 +74,16 @@ class PermissionsTest extends TestCase
             ->see('Edit')
             ->submitForm('Save', ['permissions' => [1], 'roles' => [1]])
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.user_permissions_table'), ['user_id' => 1, 'permission_id' => 1])
-            ->seeInDatabase(config('admin.database.role_users_table'), ['user_id' => 1, 'role_id' => 1]);
+            ->seeInDatabase(config('admin.database.user_permissions_table'), ['Waiter_ID' => 1, 'permission_id' => 1])
+            ->seeInDatabase(config('admin.database.role_users_table'), ['Waiter_ID' => 1, 'role_id' => 1]);
     }
 
     public function testAddUserAndAssignPermission()
     {
         $user = [
-            'username'              => 'Test',
+            'Waiter_Login'              => 'Test',
             'name'                  => 'Name',
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123456',
         ];
 
@@ -91,7 +91,7 @@ class PermissionsTest extends TestCase
             ->see('Create')
             ->submitForm('Submit', $user)
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.users_table'), ['username' => 'Test']);
+            ->seeInDatabase(config('admin.database.users_table'), ['Waiter_Login' => 'Test']);
 
         $this->assertFalse(Administrator::find(2)->isAdministrator());
 
@@ -113,7 +113,7 @@ class PermissionsTest extends TestCase
             ->see('Edit')
             ->submitForm('Save', ['permissions' => [6]])
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.user_permissions_table'), ['user_id' => 2, 'permission_id' => 6]);
+            ->seeInDatabase(config('admin.database.user_permissions_table'), ['Waiter_ID' => 2, 'permission_id' => 6]);
 
         $this->assertTrue(Administrator::find(2)->can('can-update'));
         $this->assertTrue(Administrator::find(2)->cannot('can-remove'));
@@ -122,7 +122,7 @@ class PermissionsTest extends TestCase
             ->see('Edit')
             ->submitForm('Save', ['permissions' => [7]])
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.user_permissions_table'), ['user_id' => 2, 'permission_id' => 7]);
+            ->seeInDatabase(config('admin.database.user_permissions_table'), ['Waiter_ID' => 2, 'permission_id' => 7]);
 
         $this->assertTrue(Administrator::find(2)->can('can-remove'));
 
@@ -130,8 +130,8 @@ class PermissionsTest extends TestCase
             ->see('Edit')
             ->submitForm('Save', ['permissions' => []])
             ->seePageIs('admin/auth/users')
-            ->missingFromDatabase(config('admin.database.user_permissions_table'), ['user_id' => 2, 'permission_id' => 6])
-            ->missingFromDatabase(config('admin.database.user_permissions_table'), ['user_id' => 2, 'permission_id' => 7]);
+            ->missingFromDatabase(config('admin.database.user_permissions_table'), ['Waiter_ID' => 2, 'permission_id' => 6])
+            ->missingFromDatabase(config('admin.database.user_permissions_table'), ['Waiter_ID' => 2, 'permission_id' => 7]);
 
         $this->assertTrue(Administrator::find(2)->cannot('can-update'));
         $this->assertTrue(Administrator::find(2)->cannot('can-remove'));
@@ -140,9 +140,9 @@ class PermissionsTest extends TestCase
     public function testPermissionThroughRole()
     {
         $user = [
-            'username'              => 'Test',
+            'Waiter_Login'              => 'Test',
             'name'                  => 'Name',
-            'password'              => '123456',
+            'Waiter_Password'              => '123456',
             'password_confirmation' => '123456',
         ];
 
@@ -151,7 +151,7 @@ class PermissionsTest extends TestCase
             ->see('Create')
             ->submitForm('Submit', $user)
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.users_table'), ['username' => 'Test']);
+            ->seeInDatabase(config('admin.database.users_table'), ['Waiter_Login' => 'Test']);
 
         $this->assertFalse(Administrator::find(2)->isAdministrator());
 
@@ -170,7 +170,7 @@ class PermissionsTest extends TestCase
             ->see('Edit')
             ->submitForm('Save', ['roles' => [2]])
             ->seePageIs('admin/auth/users')
-            ->seeInDatabase(config('admin.database.role_users_table'), ['user_id' => 2, 'role_id' => 2]);
+            ->seeInDatabase(config('admin.database.role_users_table'), ['Waiter_ID' => 2, 'role_id' => 2]);
 
         $this->assertTrue(Administrator::find(2)->isRole('developer'));
 

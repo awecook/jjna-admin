@@ -36,7 +36,7 @@ class Role extends Model
 
         $relatedModel = config('admin.database.users_model');
 
-        return $this->belongsToMany($relatedModel, $pivotTable, 'role_id', 'user_id');
+        return $this->belongsToMany($relatedModel, $pivotTable, 'role_id', 'Waiter_ID');
     }
 
     /**

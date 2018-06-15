@@ -38,12 +38,12 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $credentials = $request->only([$this->username(), 'password']);
+        $credentials = $request->only([$this->username(), 'Waiter_Password']);
 
         /** @var \Illuminate\Validation\Validator $validator */
         $validator = Validator::make($credentials, [
             $this->username()   => 'required',
-            'password'          => 'required',
+            'Waiter_Password'          => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -111,10 +111,10 @@ class AuthController extends Controller
     protected function settingForm()
     {
         return Administrator::form(function (Form $form) {
-            $form->display('username', trans('admin.username'));
+            $form->display('Waiter_Login', trans('admin.username'));
             $form->text('name', trans('admin.name'))->rules('required');
             $form->image('avatar', trans('admin.avatar'));
-            $form->password('password', trans('admin.password'))->rules('confirmed|required');
+            $form->password('Waiter_Password', trans('admin.password'))->rules('confirmed|required');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
                 ->default(function ($form) {
                     return $form->model()->password;
@@ -185,7 +185,7 @@ class AuthController extends Controller
      */
     protected function username()
     {
-        return 'username';
+        return 'Waiter_Login';
     }
 
     /**

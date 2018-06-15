@@ -98,10 +98,10 @@ class UserController extends Controller
         return Administrator::form(function (Form $form) {
             $form->display('id', 'ID');
 
-            $form->text('username', trans('admin.username'))->rules('required');
+            $form->text('Waiter_Login', trans('admin.username'))->rules('required');
             $form->text('name', trans('admin.name'))->rules('required');
             $form->image('avatar', trans('admin.avatar'));
-            $form->password('password', trans('admin.password'))->rules('required|confirmed');
+            $form->password('Waiter_Password', trans('admin.password'))->rules('required|confirmed');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
                 ->default(function ($form) {
                     return $form->model()->password;

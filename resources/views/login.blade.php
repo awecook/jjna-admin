@@ -32,21 +32,21 @@
     <p class="login-box-msg">{{ trans('admin.login') }}</p>
 
     <form action="{{ admin_base_path('auth/login') }}" method="post">
-      <div class="form-group has-feedback {!! !$errors->has('username') ?: 'has-error' !!}">
+      <div class="form-group has-feedback {!! !$errors->has('Waiter_Login') ?: 'has-error' !!}">
 
-        @if($errors->has('username'))
-          @foreach($errors->get('username') as $message)
+        @if($errors->has('Waiter_Login'))
+          @foreach($errors->get('Waiter_Login') as $message)
             <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label></br>
           @endforeach
         @endif
 
-        <input type="input" class="form-control" placeholder="{{ trans('admin.username') }}" name="username" value="{{ old('username') }}">
+        <input type="input" class="form-control" placeholder="{{ trans('admin.username') }}" name="username" value="{{ old('Waiter_Login') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback {!! !$errors->has('password') ?: 'has-error' !!}">
+      <div class="form-group has-feedback {!! !$errors->has('Waiter_Password') ?: 'has-error' !!}">
 
-        @if($errors->has('password'))
-          @foreach($errors->get('password') as $message)
+        @if($errors->has('Waiter_Password'))
+          @foreach($errors->get('Waiter_Password') as $message)
             <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label></br>
           @endforeach
         @endif

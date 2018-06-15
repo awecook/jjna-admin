@@ -17,7 +17,7 @@ class UserGridTest extends TestCase
     {
         $this->visit('admin/users')
             ->see('All users')
-            ->seeInElement('tr th', 'Username')
+            ->seeInElement('tr th', 'Waiter_Login')
             ->seeInElement('tr th', 'Email')
             ->seeInElement('tr th', 'Mobile')
             ->seeInElement('tr th', 'Full name')
@@ -126,7 +126,7 @@ class UserGridTest extends TestCase
         $this->assertCount(50, UserModel::all());
         $this->assertCount(50, ProfileModel::all());
 
-        $users = UserModel::where('username', 'like', '%mi%')->get();
+        $users = UserModel::where('Waiter_Login', 'like', '%mi%')->get();
 
         $this->visit('admin/users?username=mi');
 
