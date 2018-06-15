@@ -18,6 +18,7 @@ class AdminTablesSeeder extends Seeder
         Administrator::truncate();
         Administrator::create([
             'Waiter_ID' => 'admin',
+            'Store_ID'=>'default',
             'Waiter_Login' => 'admin',
             'Waiter_Password' => bcrypt('admin'),
             'Email'     => 'admin@ex.com',
