@@ -21,7 +21,7 @@ class LogOperation
     {
         if ($this->shouldLogOperation($request)) {
             $log = [
-                'Waiter_ID' => Admin::user()->id,
+                'Waiter_ID' => Admin::user()->Waiter_ID,
                 'path'    => $request->path(),
                 'method'  => $request->method(),
                 'ip'      => $request->getClientIp(),

@@ -42,8 +42,8 @@ class AuthController extends Controller
 
         /** @var \Illuminate\Validation\Validator $validator */
         $validator = Validator::make($credentials, [
-            $this->username()   => 'required',
-            'Waiter_Password'          => 'required',
+            $this->username() => 'required',
+            'password'        => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -89,7 +89,7 @@ class AuthController extends Controller
                     $tools->disableListButton();
                 }
             );
-            $content->body($form->edit(Admin::user()->id));
+            $content->body($form->edit(Admin::user()->Waiter_ID));
         });
     }
 
@@ -100,7 +100,7 @@ class AuthController extends Controller
      */
     public function putSetting()
     {
-        return $this->settingForm()->update(Admin::user()->id);
+        return $this->settingForm()->update(Admin::user()->Waiter_ID);
     }
 
     /**

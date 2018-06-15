@@ -31,7 +31,7 @@
                         <!-- The user image in the navbar-->
                         <img src="{{ Admin::user()->avatar }}" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ Admin::user()->name }}</span>
+                        <span class="hidden-xs">{{ Admin::user()->Waiter_Login }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -39,8 +39,8 @@
                             <img src="{{ Admin::user()->avatar }}" class="img-circle" alt="User Image">
 
                             <p>
-                                {{ Admin::user()->name }}
-                                <small>Member since admin {{ Admin::user()->created_at }}</small>
+                                {{ Admin::user()->Waiter_Login }}
+                                <small>Member since admin</small>
                             </p>
                         </li>
                         <li class="user-footer">
