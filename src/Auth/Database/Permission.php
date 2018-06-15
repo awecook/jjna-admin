@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 class Permission extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */

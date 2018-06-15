@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OperationLog extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = ['Waiter_ID', 'path', 'method', 'ip', 'input'];
 
     public static $methodColors = [

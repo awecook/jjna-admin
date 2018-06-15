@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
  */
 class Menu extends Model
 {
+    public $timestamps = false;
+
     use AdminBuilder, ModelTree {
         ModelTree::boot as treeBoot;
     }

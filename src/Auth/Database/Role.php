@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
-    protected $fillable = ['name', 'slug'];
+    public $timestamps = false;
+
+    protected $fillable = ['id','name', 'slug'];
 
     /**
      * Create a new Eloquent model instance.

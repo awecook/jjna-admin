@@ -14,7 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Administrator extends Model implements AuthenticatableContract
 {
+
     use Authenticatable, AdminBuilder, HasPermissions;
+
+    public $timestamps = false;
+
 
     protected $fillable = ['Waiter_Login', 'Waiter_Password', 'name', 'avatar'];
 
