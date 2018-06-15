@@ -36,20 +36,4 @@ class Administrator extends Employee implements AuthenticatableContract
 {
 
     use Authenticatable, AdminBuilder, HasPermissions;
-
-    /**
-     * Create a new Eloquent model instance.
-     *
-     * @param array $attributes
-     */
-    public function __construct(array $attributes = [])
-    {
-        $connection = config('admin.database.connection') ?: config('database.default');
-
-        $this->setConnection($connection);
-
-        $this->setTable(config('admin.database.users_table'));
-
-        parent::__construct($attributes);
-    }
 }
