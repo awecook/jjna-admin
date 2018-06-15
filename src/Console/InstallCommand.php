@@ -2,7 +2,7 @@
 
 namespace Encore\Admin\Console;
 
-use App\Models\EmployeeAuth as Administrator;
+use Encore\Admin\Auth\Database\Administrator;
 use Illuminate\Console\Command;
 
 class InstallCommand extends Command

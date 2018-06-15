@@ -2,7 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
-use App\Models\EmployeeAuth as Administrator;
+use Encore\Admin\Auth\Database\Administrator;
 use Encore\Admin\Auth\Database\Permission;
 use Encore\Admin\Auth\Database\Role;
 use Encore\Admin\Facades\Admin;
@@ -67,12 +67,10 @@ class UserController extends Controller
     protected function grid()
     {
         return Administrator::grid(function (Grid $grid) {
-            $grid->id('ID')->sortable();
-            $grid->username(trans('admin.username'));
-            $grid->name(trans('admin.name'));
-            $grid->roles(trans('admin.roles'))->pluck('name')->label();
-            $grid->created_at(trans('admin.created_at'));
-            $grid->updated_at(trans('admin.updated_at'));
+            $grid->Waiter_ID('Waiter ID')->sortable();
+            $grid->Waiter_Login('Waiter Login');
+            $grid->Email('Email');
+            $grid->roles('Roles')->pluck('name')->label();
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ($actions->getKey() == 1) {

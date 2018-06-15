@@ -3,7 +3,6 @@
 namespace Encore\Admin\Auth\Database;
 
 use Illuminate\Database\Seeder;
-use App\Models\EmployeeAuth as Administrator;
 
 class AdminTablesSeeder extends Seeder
 {
