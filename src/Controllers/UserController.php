@@ -94,28 +94,43 @@ class UserController extends Controller
     public function form()
     {
         return Administrator::form(function (Form $form) {
-            $form->display('id', 'ID');
 
-            $form->text('Waiter_Login', trans('admin.username'))->rules('required');
-            $form->text('name', trans('admin.name'))->rules('required');
-            $form->image('avatar', trans('admin.avatar'));
-            $form->password('Waiter_Password', trans('admin.password'))->rules('required|confirmed');
-            $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
+            $form->text('Waiter_ID', 'Waiter ID')->rules('required');
+            $form->text('Waiter_Login', 'Waiter Login')->rules('required');
+            /*$form->text('name', trans('admin.name'))->rules('required');
+            $form->image('avatar', trans('admin.avatar'));*/
+            $form->password('Waiter_Password', 'Waiter Password')->rules('required|confirmed')->default(function ($form) {
+                return $form->model()->Waiter_Password;
+            });
+            $form->password('Waiter_Password_confirmation', trans('admin.password_confirmation'))->rules('required')
                 ->default(function ($form) {
-                    return $form->model()->password;
+                    return $form->model()->Waiter_Password;
                 });
 
-            $form->ignore(['password_confirmation']);
+            $form->ignore(['Waiter_Password_confirmation']);
 
-            $form->multipleSelect('roles', trans('admin.roles'))->options(Role::all()->pluck('name', 'id'));
+            $form->multipleSelect('roles', 'Access Level')->options(Role::all()->pluck('name', 'id'));
             $form->multipleSelect('permissions', trans('admin.permissions'))->options(Permission::all()->pluck('name', 'id'));
 
-            $form->display('created_at', trans('admin.created_at'));
-            $form->display('updated_at', trans('admin.updated_at'));
+            $form->select('Store_ID')->options(\App\Models\Append\Store::all()->pluck('Store_ID'));
+            $form->text('Government_ID');
+            $form->text('Country');
+            $form->text('State_Province');
+            $form->text('County');
+            $form->text('City');
+            $form->text('Street_Address_Line_1');
+            $form->text('Street_Address_Line_2');
+            $form->text('Zip_Code');
+            $form->text('Phone_Area_Code');
+            $form->text('Phone');
+            $form->email('Email')->rules('required');
 
             $form->saving(function (Form $form) {
-                if ($form->password && $form->model()->password != $form->password) {
-                    $form->password = bcrypt($form->password);
+                if ($form->Waiter_Password && $form->model()->Waiter_Password != $form->Waiter_Password) {
+                    $form->Waiter_Password = bcrypt($form->Waiter_Password);
+                }
+                if ($form->roles && $form->model()->Access_Level != $form->roles[0]) {
+                    $form->Access_Level = $form->roles[0];
                 }
             });
         });

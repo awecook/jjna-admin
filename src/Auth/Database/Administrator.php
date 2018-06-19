@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Administrator.
  *
+ * @property string Waiter_ID
  * @property string Store_ID
  * @property string Waiter_Login
  * @property string Waiter_Password
@@ -34,6 +35,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Administrator extends Employee implements AuthenticatableContract
 {
-
     use Authenticatable, AdminBuilder, HasPermissions;
 }

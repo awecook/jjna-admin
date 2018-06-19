@@ -91,9 +91,6 @@ class PermissionController extends Controller
                 })->implode('');
             });
 
-            $grid->created_at(trans('admin.created_at'));
-            $grid->updated_at(trans('admin.updated_at'));
-
             $grid->tools(function (Grid\Tools $tools) {
                 $tools->batch(function (Grid\Tools\BatchActions $actions) {
                     $actions->disableDelete();
@@ -119,9 +116,6 @@ class PermissionController extends Controller
                 ->options($this->getHttpMethodsOptions())
                 ->help(trans('admin.all_methods_if_empty'));
             $form->textarea('http_path', trans('admin.http.path'));
-
-            $form->display('created_at', trans('admin.created_at'));
-            $form->display('updated_at', trans('admin.updated_at'));
         });
     }
 

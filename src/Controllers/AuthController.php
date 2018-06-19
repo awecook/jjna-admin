@@ -38,7 +38,7 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $credentials = $request->only([$this->username(), 'Waiter_Password']);
+        $credentials = $request->only([$this->username(), 'password']);
 
         /** @var \Illuminate\Validation\Validator $validator */
         $validator = Validator::make($credentials, [

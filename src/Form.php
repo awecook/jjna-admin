@@ -1263,7 +1263,7 @@ class Form
             'month'          => \Encore\Admin\Form\Field\Month::class,
             'multipleSelect' => \Encore\Admin\Form\Field\MultipleSelect::class,
             'number'         => \Encore\Admin\Form\Field\Number::class,
-            'Waiter_Password'       => \Encore\Admin\Form\Field\Password::class,
+            'password'       => \Encore\Admin\Form\Field\Password::class,
             'radio'          => \Encore\Admin\Form\Field\Radio::class,
             'rate'           => \Encore\Admin\Form\Field\Rate::class,
             'select'         => \Encore\Admin\Form\Field\Select::class,

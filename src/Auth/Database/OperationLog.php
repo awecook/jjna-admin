@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OperationLog extends Model
 {
-    public $timestamps = false;
-
     protected $fillable = ['Waiter_ID', 'path', 'method', 'ip', 'input'];
 
     public static $methodColors = [
@@ -46,6 +44,6 @@ class OperationLog extends Model
      */
     public function user() : BelongsTo
     {
-        return $this->belongsTo(Administrator::class);
+        return $this->belongsTo(Administrator::class,'Waiter_ID','Waiter_ID');
     }
 }

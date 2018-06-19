@@ -66,14 +66,11 @@ class RoleController extends Controller
     protected function grid()
     {
         return Admin::grid(Role::class, function (Grid $grid) {
-            $grid->id('ID')->sortable();
+            $grid->id('Access Level')->sortable();
             $grid->slug(trans('admin.slug'));
             $grid->name(trans('admin.name'));
 
             $grid->permissions(trans('admin.permission'))->pluck('name')->label();
-
-            $grid->created_at(trans('admin.created_at'));
-            $grid->updated_at(trans('admin.updated_at'));
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 if ($actions->row->slug == 'administrator') {
@@ -97,14 +94,10 @@ class RoleController extends Controller
     public function form()
     {
         return Admin::form(Role::class, function (Form $form) {
-            $form->display('id', 'ID');
-
+            $form->text('id', 'Access Level')->rules('required');
             $form->text('slug', trans('admin.slug'))->rules('required');
             $form->text('name', trans('admin.name'))->rules('required');
             $form->listbox('permissions', trans('admin.permissions'))->options(Permission::all()->pluck('name', 'id'));
-
-            $form->display('created_at', trans('admin.created_at'));
-            $form->display('updated_at', trans('admin.updated_at'));
         });
     }
 }

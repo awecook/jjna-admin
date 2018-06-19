@@ -77,6 +77,7 @@ class CreateAdminTables extends Migration
             $table->string('method', 10);
             $table->string('ip', 15);
             $table->text('input');
+            $table->timestamps();
             $table->index('Waiter_ID');
         });
     }

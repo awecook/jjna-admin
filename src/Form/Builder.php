@@ -531,7 +531,7 @@ EOT;
      */
     public function render()
     {
-        $this->removeReservedFields();
+//        $this->removeReservedFields();
 
         $tabObj = $this->form->getTab();
 
